@@ -1,0 +1,78 @@
+<%- include("partials/header.ejs") %>  
+<link rel="stylesheet" href="../../public/bootstrap.min(1).css">  
+<style>
+h1{
+  font-family: 'livvic', sans-serif;
+  text-transform: capitalize;
+}
+label{
+  font-family: 'quicksand', sans-serif;
+  font-weight: bolder;
+}
+.container{
+  border-radius: 10px; 
+  box-shadow: 0 0 20px 0 rgba(59, 64, 70, 0.7);
+  background-image: linear-gradient(60deg, #FFFEFF 0%, #D7FFFE 75%, #FFFEFF 25%);
+}
+.form-control{
+  border-radius: 15px;
+}
+.btn-block{
+  font-family: 'quicksand', sans-serif;
+  border-radius: 15px;
+  width: 80%;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+</style>
+        <div class="container animated fadeIn slow mt-5 p-5">
+           <h1 class="mt-3 text-center" style="font-size:3.2rem">Update your profile</h1>
+                   <div class="mt-3 p-4">    
+                   <form method="POST" action="/editprofile">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-md-5 mt-3 p-1">
+                        <div class="image-card d-flex justify-content-center">
+                          <img src="<%= info[0].profile_image_url %>" class="w-100"  style="height: 320px;" alt="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-between">
+                       <div class="col-md-5 mt-3 p-1">
+                          <label for="first_name" class="col-form-label">First Name</label>
+                         <input name="first_name" id="first_name" class="form-control mt-2" type="text" value="<%= info[0].first_name %>" placeholder="first name">
+                       </div>
+                       <div class="col-md-5 mt-3 p-1">
+                          <label for="last_name" class="col-form-label">Last Name</label>
+                         <input name="last_name" id="last_name" class="form-control mt-2" type="text" value="<%= info[0].last_name %>" placeholder="last name">
+                       </div>
+                     </div>
+                     <div class="row d-flex justify-content-between">
+                        <div class="col-md-5 mt-3 p-1">
+                            <label for="user_name" class="col-form-label">User Name</label>
+                          <input name="user_name" id="user_name" class="form-control mt-2" type="text" value="<%= info[0].user_name %>" placeholder="user name">
+                        </div>
+                       <div class="col-md-5 mt-3 p-1">
+                          <label for="email_id" class="col-form-label">Email id</label>
+                         <input name="email_id" id="email_id" class="form-control mt-2" type="email" value="<%= info[0].email_id %>" placeholder="your@email.com">
+                       </div>
+                     </div>
+                     <div class="row d-flex justify-content-between">
+                          <div class="col-md-5 mt-3 p-1">
+                              <label for="contact_no" class="col-form-label">Contact Number</label>
+                            <input name="contact_no" id="contact_no" class="form-control mt-2" type="text" value="<%= info[0].contact_no %>" placeholder="877XXXX430">
+                          </div>
+                          <div class="col-md-5 mt-3 p-1">
+                              <label for="paasword" class="col-form-label">Password</label>
+                            <input name="paasword" id="paasword" class="form-control mt-2" type="password"  value="<%= info[0].paasword %>" placeholder="Enter subject here">
+                          </div>
+                     </div>
+                     <input type="text" id="id" name="user_id" class="form-control mt-2" type="password"  value="<%= info[0].user_id %>" hidden>
+                     <div class="d-flex justify-content-center">
+                        <button class="mt-5 font-weight-bold btn btn-block btn-outline-success" variant="primary" type="submit">
+                            Save Changes
+                         </button>    
+                     </div>
+                   </form>
+                   </div>
+          </div>
+<%- include("partials/footer.ejs") %>
