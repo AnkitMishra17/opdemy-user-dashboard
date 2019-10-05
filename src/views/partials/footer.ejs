@@ -1,9 +1,123 @@
 
               <script src="../js/vendor/jquery-1.10.2.min.js"></script>
               <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-              <script src="./new.js"></script>
               <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
               <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+               <script type="text/javascript">
+                /*$(document).ready(function(){
+                  $('#enpopup').click(function(){
+                    $('enrollbtn').css('display','block');
+                  });
+                  $('#hidepopup').click(function(){
+                    $('enrollbtn').css('display','none');
+                  });
+
+                });*/
+                function enrollpopup(a)
+                {
+                  document.getElementById('enrollbtn').style.display="block";
+                  axios.get('/user/courses_list?user_id='+a)
+                  .then(function (response) {
+
+                    var g='';
+                    for(i=0;i<response.data.length;i++){
+
+                      var g=g+'<div class=\"card animated fadeIn slow\"><div class=\"card-header\" style=\"background-image: linear-gradient(120deg, #FFFEFF 0%, #D7FFFE 75%, #FFFEFF 25%); box-shadow: 0 0 20px 0 rgba(59, 64, 70, 0.3);\">'+response.data[i].payment_program.toUpperCase()+'</div><div class=\"card-body\"><button onclick=\"cominsoon(\''+response.data[i].payment_program+'\')\" class=\"login_submit\">Start Learning</button><button onclick=\"cominsoo(\''+response.data[i].payment_program+'\')\" class=\"login_submit\">Schedule</button>';
+                      if(response.data[i].payment_program.length>6 && response.data[i].payment_program.substring(0,2)=="si"){
+                        g=g+'<button onclick=\"optional(\''+response.data[i].payment_program+'\')\" class=\"login_submit\">Optional Subject</button>'
+                        g=g+'<button onclick=\"yogya(\''+response.data[i].payment_program+'\')\" class=\"login_submit\">Yogya Ethics</button>'
+                                  g=g+'<button onclick=\"lekhan(\''+response.data[i].payment_program+'\')\" class=\"login_submit\">Lekhan</button></div></div><br><br>'
+                      }else{
+                        g=g+'</div></div><br><br>'
+                      }
+                    }
+                    var k= document.getElementById('courses_list');
+                    k.innerHTML=(g);
+
+                  })
+                  .catch(function (error) {
+                  console.log(error);
+                  });
+
+
+                }
+                document.getElementById('hidepopup').addEventListener("click",hidepup);
+                document.getElementById('hidepopup1').addEventListener("click",hidepup);
+
+                function hidepup()
+                {
+
+                  document.getElementById('enrollbtn').style.display="none";
+                  document.getElementById('time').style.display="none";
+
+
+                }
+                function cominsoon(a){
+                  if(a=='aarambh'){
+                    window.location.assign('/learnAarambh');
+                  }
+                  if(a=='aadhar'){
+                    window.location.assign('/learnAadhar');
+                  }
+                  if(a=='yogya'){
+                    window.location.assign('/learnYogya');
+                  }
+                  if(a=='lekhan'){
+                    window.location.assign('/learnLekhan');
+                  }
+                  if(a=='daksh'){
+                    window.location.assign('/learnDaksh');
+                  }
+                  if(a.substring(0, 6)=='siddha'){
+                    window.location.assign('/learnSiddha');
+                  }
+                  if(a.substring(0, 6)=='vishis'){
+                    window.location.assign('/optional');
+                  }
+                }
+                function cominsoo(link){
+                  if(link=='aadhar'){
+                  window.location.assign('assesment1.pdf');
+                 }
+                 if(link=='aarambh'){
+                 window.location.assign('assesment2.pdf');
+                }
+                if(link=='yogya'){
+                window.location.assign('yogya.pdf');
+               }
+               if(link=='siddha(Public Administration)'){
+               window.location.assign('pa.pdf');
+              }
+              if(link=='vishishta(Public Administration)'){
+              window.location.assign('pa.pdf');
+            }
+
+                }
+
+                function optional(a){
+                  window.location.assign('/optional');
+                }
+                function yogya(a){
+                  window.location.assign('/learnYogya');
+                }
+
+                function lekhan(a){
+                  window.location.assign('/learnLekhan');
+                }
+                function timer(a){
+                  alert('Guys the marks in the scholarship test won\'t  determine  your capability .It is just the beginning  of your journey  of Upsc .Don\'t  loose hope and promise yourself to improve  and work hard with opdemy. We promise to stand by your side no matter what..this journery of yours is ours now..Hustle..');
+                  if(a==1){
+                     window.location.assign('english.pdf');
+                  }
+                  if(a==2){
+                    window.location.assign('hindi.pdf');
+                  }
+
+
+                }
+
+
+              </script>
             </body>
 </html>
